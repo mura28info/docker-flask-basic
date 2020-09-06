@@ -61,6 +61,7 @@ pipeline {
             echo 'deploying the application'
             //to run shell script
             sh "${SERVER_CREDENTIALS}"
+            echo 'Server credentials are executed'
 
             //If you want to use credentials to be used any one of the stage, you could follow like below
             //Use shell script for below to configure
