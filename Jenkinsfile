@@ -63,11 +63,12 @@ pipeline {
             sh "${SERVER_CREDENTIALS}"
 
             //If you want to use credentials to be used any one of the stage, you could follow like below
-            withCredentials([
-            usernamePassword(credentials: 'mura28info', usernameVariable: USER, passwordVariable: PWD)])
-            {
-              sh "Some Artifact script that if u want to execute ${USER} ${PWD}"
-            }
+            //Use shell script for below to configure
+            //withCredentials([
+            //usernamePassword(credentials: 'mura28info', usernameVariable: USER, passwordVariable: PWD)])
+            //{
+              //sh "Some Artifact script that if u want to execute ${USER} ${PWD}"
+            //}
 
             echo "deploying version is ${params.VERSION}"
           }
