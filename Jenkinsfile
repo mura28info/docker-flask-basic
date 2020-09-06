@@ -9,14 +9,14 @@ pipeline {
     //Use the credentials id here
     SERVER_CREDENTIALS = credentials('mura28info')
   }
-  
+
   tools
   {
-    //Accress build tools for your project, Only 3 build tools available from Jenkins: gradle, maven and jdk. 
+    //Accress build tools for your project, Only 3 build tools available from Jenkins: gradle, maven and jdk.
     //if you want to use anything else, that has to be handled in different ways
     maven 'Maven'
   }
-  
+
   parameters{
     //Types of parameter:
     //string(name, defaultValue, description)
@@ -25,8 +25,8 @@ pipeline {
     choice(name: 'VERSION', choices: ['1.0.0', '2.0.0', '3.0.0'], description: 'The version to deploy on production')
     booleanParam(name:'executeTests', defaultValue:true, description:'Skip the stage based on the condition')
   }
-  
-  
+
+
     stages
     {
         stage("build")
@@ -60,32 +60,35 @@ pipeline {
             echo 'deploying the application'
             //to run shell script
             sh "${SERVER_CREDENTIOALS}"
-            
+
             //If you want to use credentials to be used any one of the stage, you could follow like below
             withCredentials([
             usernamePassword(credentials: 'mura28info', usernameVariable: USER, passwordVariable: PWD)])
             {
               sh "Some Artifact script that if u want to execute ${USER} ${PWD}"
             }
-            
+
             echo "deploying version is ${params.VERSION}"
           }
         }
      }
-  post 
+  post
     {
        //Executes some logic AFTER all stages are executed.
-      always 
+      always
       {
         //Always this step is executed
+        echo 'Executing post condition always'
       }
       success
       {
         //Only if success
+        echo 'Executing post condition on success'
       }
       failure
       {
         //Only failed
+        echo 'Executing post condition on failure'
       }
     }
 }
