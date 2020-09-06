@@ -57,10 +57,10 @@ pipeline {
         {
           steps
           {
-            echo "Deploying with ${SERVER_CREDENTIOALS}"
+            echo "Deploying with ${SERVER_CREDENTIALS}"
             echo 'deploying the application'
             //to run shell script
-            sh "${SERVER_CREDENTIOALS}"
+            sh "${SERVER_CREDENTIALS}"
 
             //If you want to use credentials to be used any one of the stage, you could follow like below
             withCredentials([
