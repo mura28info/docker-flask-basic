@@ -14,7 +14,8 @@ pipeline {
   {
     //Accress build tools for your project, Only 3 build tools available from Jenkins: gradle, maven and jdk.
     //if you want to use anything else, that has to be handled in different ways
-    maven 'Maven'
+    //maven 'Maven'
+    echo 'executing tools'
   }
 
   parameters{
@@ -36,7 +37,7 @@ pipeline {
             //If you want to use variables use double coutes instead of single coutes in groovy
             echo "building version ${NEW_VERSION}"
             echo 'build the application'
-            sh "mvn install"
+            //sh "mvn install"
           }
         }
         stage("Test")
