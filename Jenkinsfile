@@ -10,13 +10,13 @@ pipeline {
     SERVER_CREDENTIALS = credentials('mura28info')
   }
 
-  tools
-  {
+  //tools
+  //{
     //Accress build tools for your project, Only 3 build tools available from Jenkins: gradle, maven and jdk.
     //if you want to use anything else, that has to be handled in different ways
     //maven 'Maven'
-    echo 'executing tools'
-  }
+    //echo 'executing tools'
+  //}
 
   parameters{
     //Types of parameter:
